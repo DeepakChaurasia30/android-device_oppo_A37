@@ -65,3 +65,6 @@ on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
 
+on fs
+    # GnssConfiguration doesn't actually look at gps.conf, just the debug file
+    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
