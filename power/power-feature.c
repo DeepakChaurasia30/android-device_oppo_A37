@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2020 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,53 +14,15 @@
  * limitations under the License.
  */
 
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <dlfcn.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 #include <hardware/power.h>
+#include <utils.h>
 
-#define LOG_TAG "PowerHAL feature"
-#include <utils/Log.h>
-
-#define TAP_TO_WAKE_NODE "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"
-
-static int sysfs_write(char *path, char *s)
-{
-    char buf[80];
-    int len;
-    int ret = 0;
-    int fd = open(path, O_WRONLY);
-
-    if (fd < 0) {
-        strerror_r(errno, buf, sizeof(buf));
-        ALOGE("Error opening %s: %s\n", path, buf);
-        return -1 ;
-    }
-
-    len = write(fd, s, strlen(s));
-    if (len < 0) {
-        strerror_r(errno, buf, sizeof(buf));
-        ALOGE("Error writing to %s: %s\n", path, buf);
-
-        ret = -1;
-    }
-
-    close(fd);
-
-    return ret;
-}
-
-void set_device_specific_feature(struct power_module *module __unused,
-        feature_t feature, int state)
-{
-    if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
-        sysfs_write(TAP_TO_WAKE_NODE,
-                state ? "double_click=true" : "double_click=false");
+void set_device_specific_feature(feature_t feature, int state) {
+    switch (feature) {
+        case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
+            sysfs_write("/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl", state ? "double_click=true" : "double_click=false");
+            break;
+        default:
+            break;
     }
 }
