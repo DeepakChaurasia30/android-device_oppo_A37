@@ -35,6 +35,7 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/bin/cameraserver=22 \
     /system/bin/mediaserver=22 \
     /system/vendor/bin/mm-qcamera-daemon=22
+    /system/vendor/bin/ims_rtp_daemon=22
 
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072
