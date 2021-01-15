@@ -17,6 +17,7 @@
 
 # Inherit from msm8916-common
 $(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)
+$(call inherit-product, device/yu/tomato/art.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
