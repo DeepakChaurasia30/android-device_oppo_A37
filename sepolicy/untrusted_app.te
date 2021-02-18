@@ -1,5 +1,6 @@
 allow untrusted_app mnt_media_rw_file:dir r_file_perms;
 allow untrusted_app mnt_media_rw_file:dir search;
 allow untrusted_app apk_data_file:file setattr;
-
+allow untrusted_app hal_memtrack_hwservice:hwservice_manager find;
+allow untrusted_app hal_memtrack_default:binder call;
 
