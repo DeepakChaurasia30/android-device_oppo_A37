@@ -8,8 +8,6 @@ vendor/lib/libfastcvopt.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
-vendor/lib/libaptX_encoder.so
-vendor/lib64/libaptX_encoder.so
 
 # Audio - from LA.BR.1.2.9.1-02310-8x16.0
 vendor/lib/libacdb-fts.so|6208304e3a0448ead0765c13a8357e961a7d6115
