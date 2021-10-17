@@ -19,6 +19,8 @@
 include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/yu/tomato
+# APEX
+OVERRIDE_TARGET_FLATTEN_APEX := true
 
 # Assertions
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
