@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2014, 2016 The Linux Foundation. All rights reserved.
  * Not a Contribution.
  * Copyright (C) 2008 The Android Open Source Project
  *
@@ -106,6 +106,10 @@ int64_t SensorBase::getTimestamp() {
     return int64_t(t.tv_sec)*1000000000LL + t.tv_nsec;
 }
 
+int64_t SensorBase::getClkOffset() {
+    return (getTimestamp() - android::elapsedRealtimeNano());
+}
+
 int SensorBase::openInput(const char* inputName) {
     int fd = -1;
     const char *dirname = "/dev/input";
@@ -116,15 +120,15 @@ int SensorBase::openInput(const char* inputName) {
     dir = opendir(dirname);
     if(dir == NULL)
         return -1;
-    strcpy(devname, dirname);
-    filename = devname + strlen(devname);
+    strlcpy(devname, dirname, PATH_MAX);
+    filename = devname + strlen(dirname);
     *filename++ = '/';
     while((de = readdir(dir))) {
         if(de->d_name[0] == '.' &&
                 (de->d_name[1] == '\0' ||
                         (de->d_name[1] == '.' && de->d_name[2] == '\0')))
             continue;
-        strcpy(filename, de->d_name);
+        strlcpy(filename, de->d_name, PATH_MAX - strlen(SYSFS_CLASS));
         fd = open(devname, O_RDONLY);
         if (fd>=0) {
             char name[80];
@@ -132,7 +136,7 @@ int SensorBase::openInput(const char* inputName) {
                 name[0] = '\0';
             }
             if (!strcmp(name, inputName)) {
-                strcpy(input_name, filename);
+                strlcpy(input_name, filename, PATH_MAX);
                 break;
             } else {
                 close(fd);
@@ -151,13 +155,13 @@ int SensorBase::injectEvents(sensors_event_t*, int)
         return 0;
 }
 
-int SensorBase::calibrate(int32_t handle, struct cal_cmd_t *para,
-        struct cal_result_t *outpara)
+int SensorBase::calibrate(int32_t, struct cal_cmd_t*,
+                 struct cal_result_t*)
 {
         return -1;
 }
 
-int SensorBase::initCalibrate(int32_t handle, struct cal_result_t *prar)
+int SensorBase::initCalibrate(int32_t, struct cal_result_t*)
 {
         return -1;
 }
@@ -209,7 +213,7 @@ int SensorBase::flush(int32_t handle)
          */
 
         /* Should return -EINVAL if the sensor is not enabled */
-        if ((!mEnabled) || (ctx == NULL)) {
+        if ((!mEnabled) || (ctx == NULL) || (ctx->sensor->flags & SENSOR_FLAG_ONE_SHOT_MODE)) {
                 ALOGE("handle:%d mEnabled:%d ctx:%p\n", handle, mEnabled, ctx);
                 return -EINVAL;
         }

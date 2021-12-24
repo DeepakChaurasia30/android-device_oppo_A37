@@ -1,5 +1,5 @@
 # Audio
-ro.vendor.audio.sdk.fluencetype=fluence
+ro.vendor.audio.sdk.fluencetype=none
 persist.vendor.audio.fluence.voicecall=true
 persist.vendor.audio.fluence.voicerec=false
 persist.vendor.audio.fluence.speaker=false
@@ -7,6 +7,8 @@ persist.vendor.audio.fluence.speaker=false
 # Camera
 persist.camera.cpp.duplication=false
 persist.camera.hal.debug.mask=0
+persist.camera.disable.spzoom=1
+persist.camera.disable.anight=1
 
 #Display
 ro.surface_flinger.vsync_event_phase_offset_ns=4000000
@@ -21,7 +23,6 @@ ro.lmk.upgrade_pressure=40
 ro.lmk.use_psi=false
 
 # Radio
-persist.data.target=dpm1
 persist.radio.multisim.config=dsds
 ro.config.always_show_roaming=true
 rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so

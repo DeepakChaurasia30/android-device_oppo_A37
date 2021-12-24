@@ -33,12 +33,12 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <dlfcn.h>
-#include <string.h>
 
 #include <utils/Log.h>
 #include <CalibrationModule.h>
 #include "sensors.h"
 #include "CalibrationManager.h"
+#include "NativeSensorManager.h"
 
 ANDROID_SINGLETON_STATIC_INSTANCE(CalibrationManager);
 
@@ -220,12 +220,12 @@ const sensor_cal_algo_t* CalibrationManager::getCalAlgo(const sensor_t *s/* = NU
 	}
 
 	if (i != algo_count) {
-		ALOGI("found exactly compatible algo for type %d", s->type);
+		ALOGI("found exactly compatible algo for %s", s->name);
 		return list[i];
 	}
 
 	if (tmp != NULL)
-		ALOGI("found compatible algo for type %d", s->type);
+		ALOGI("found compatible algo for %s", s->name);
 
 	return tmp;
 }

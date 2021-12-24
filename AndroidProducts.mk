@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_tomato.mk
+    $(LOCAL_DIR)/lineage_A37.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_tomato-user \
-    lineage_tomato-userdebug \
-    lineage_tomato-eng
+    lineage_A37-user \
+    lineage_A37-userdebug \
+    lineage_A37-eng

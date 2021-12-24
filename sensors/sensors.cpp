@@ -35,7 +35,7 @@
 #include "AccelSensor.h"
 #include "LightSensor.h"
 #include "ProximitySensor.h"
-#include "GyroSensor.h"
+#include "CompassSensor.h"
 
 #include "NativeSensorManager.h"
 #include "sensors_extension.h"
@@ -53,22 +53,22 @@ static int sensors__get_sensors_list(struct sensors_module_t*,
 }
 
 static struct hw_module_methods_t sensors_module_methods = {
-		open: open_sensors
+	.open = open_sensors
 };
 
 struct sensors_module_t HAL_MODULE_INFO_SYM = {
-		common: {
-				tag: HARDWARE_MODULE_TAG,
-				version_major: 1,
-				version_minor: 0,
-				id: SENSORS_HARDWARE_MODULE_ID,
-				name: "Quic Sensor module",
-				author: "Quic",
-				methods: &sensors_module_methods,
-				dso: NULL,
-				reserved: {0},
-		},
-		get_sensors_list: sensors__get_sensors_list,
+	.common = {
+		.tag = HARDWARE_MODULE_TAG,
+		.version_major = 1,
+		.version_minor = 0,
+		.id = SENSORS_HARDWARE_MODULE_ID,
+		.name = "Quic Sensor module",
+		.author = "Quic",
+		.methods = &sensors_module_methods,
+		.dso = NULL,
+		.reserved = { 0 },
+	},
+	.get_sensors_list = sensors__get_sensors_list,
 };
 
 struct sensors_poll_context_t {
@@ -88,7 +88,6 @@ private:
 	static const char WAKE_MESSAGE = 'W';
 	struct pollfd mPollFds[MAX_SENSORS+1];
 	int mWritePipeFd;
-	SensorBase* mSensors[MAX_SENSORS];
 	mutable Mutex mLock;
 };
 
@@ -212,16 +211,9 @@ int sensors_poll_context_t::pollEvents(sensors_event_t* data, int count)
 	return nbEvents;
 }
 
-int sensors_poll_context_t::calibrate(int handle, struct cal_cmd_t *para)
+int sensors_poll_context_t::calibrate(int /* handle */, struct cal_cmd_t * /* para */)
 {
-
-	int err = -1;
-	NativeSensorManager& sm(NativeSensorManager::getInstance());
-	Mutex::Autolock _l(mLock);
-
-	//err = sm.calibrate(handle, para);
-
-	return err;
+	return -ENOSYS;
 }
 
 int sensors_poll_context_t::batch(int handle, int sample_ns, int latency_ns)
@@ -234,10 +226,19 @@ int sensors_poll_context_t::batch(int handle, int sample_ns, int latency_ns)
 
 int sensors_poll_context_t::flush(int handle)
 {
+	int ret;
+	const char wakeMessage(WAKE_MESSAGE);
+	int result;
+
 	NativeSensorManager& sm(NativeSensorManager::getInstance());
 	Mutex::Autolock _l(mLock);
 
-	return sm.flush(handle);
+	ret = sm.flush(handle);
+
+	result = write(mWritePipeFd, &wakeMessage, 1);
+	ALOGE_IF(result<0, "error sending wake message (%s)", strerror(errno));
+
+	return ret;
 }
 /*****************************************************************************/
 
@@ -298,7 +299,6 @@ static int open_sensors(const struct hw_module_t* module, const char*,
 {
 		int status = -EINVAL;
 		sensors_poll_context_t *dev = new sensors_poll_context_t();
-		NativeSensorManager& sm(NativeSensorManager::getInstance());
 
 		memset(&dev->device, 0, sizeof(sensors_poll_device_1_ext_t));
 

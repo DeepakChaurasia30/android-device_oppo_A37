@@ -45,7 +45,7 @@ __BEGIN_DECLS
 #define TEMPERATURE_NAME	"temperature"
 #define PROXIMITY_NAME		"proximity"
 #define GRAVITY_NAME		"gravity"
-#define LINEAR_ACCELERATION_NAME	"liner_acceleration"
+#define LINEAR_ACCELERATION_NAME	"linear_acceleration"
 #define ROTATION_VECTOR_NAME	"rotation_vector"
 #define RELATIVE_HUMIDITY_NAME	"relative_humidity"
 #define AMBIENT_TEMPERATURE_NAME	"ambient_temperature"
@@ -71,6 +71,7 @@ enum {
 	CMD_ENABLE = 0, /* Enable status changed */
 	CMD_DELAY, /* Polling rate changed */
 	CMD_BATCH, /* Batching parameter changed */
+	CMD_INIT,
 };
 
 struct sensor_cal_algo_t;
@@ -86,8 +87,13 @@ struct compass_algo_args {
 	uint32_t reserved[16];
 };
 
+struct gyro_algo_args {
+	struct sensor_algo_args common;
+	float bias[3];
+};
+
 struct sensor_algo_methods_t {
-	int (*convert)(sensors_event_t *raw, sensors_event_t *result, struct sensor_algo_args *args);
+	int (*convert)(sensors_event_t *raw, sensors_event_t *result);
 	/* Note that the config callback is called from a different thread as convert */
 	int (*config)(int cmd, struct sensor_algo_args *args);
 };

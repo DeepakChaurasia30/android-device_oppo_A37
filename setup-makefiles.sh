@@ -18,8 +18,8 @@
 
 set -e
 
-DEVICE=tomato
-VENDOR=yu
+DEVICE=A37
+VENDOR=oppo
 
 INITIAL_COPYRIGHT_YEAR=2015
 
