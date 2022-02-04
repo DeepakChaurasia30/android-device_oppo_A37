@@ -269,6 +269,8 @@ vendor/lib/libscale.so|80477499a5c44d5f81a426cb3122b31a9dc837a6
 # Graphics firmware - from LA.BR.1.2.9.1-02310-8x16.0
 etc/firmware/a420_pfp.fw:vendor/firmware/a420_pfp.fw|ceb61d9f1385b3f2956d72f33e0bd43cb12f72f0
 etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw|96addc1f5cb6dd3a57fc40ef0a6ba8721d5b601f
+etc/firmware/a300_pfp.fw:vendor/firmware/a300_pfp.fw
+etc/firmware/a300_pm4.fw:vendor/firmware/a300_pm4.fw
 
 # Media - from LA.BR.1.2.9.1-02310-8x16.0
 lib/libmmosal.so|3f0e86afd0c322f32b78e473dbc17368ec6f91f6
