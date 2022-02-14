@@ -32,3 +32,7 @@ ro.telephony.default_network=9,9
 
 # Screen density
 ro.sf.lcd_density=320
+
+# Volte
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1 
