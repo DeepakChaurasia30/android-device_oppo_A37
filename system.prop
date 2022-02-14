@@ -31,4 +31,4 @@ ril.ecclist1=000,08,100,101,102,110,112,118,119,120,122,911,999
 ro.telephony.default_network=9,9
 
 # Screen density
-ro.sf.lcd_density=280
+ro.sf.lcd_density=320
