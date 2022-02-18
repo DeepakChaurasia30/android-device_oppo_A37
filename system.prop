@@ -33,7 +33,7 @@ ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
 
 # Screen density
-ro.sf.lcd_density=320
+ro.sf.lcd_density=280
 
 # Volte
 persist.dbg.ims_volte_enable=1
