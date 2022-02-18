@@ -404,11 +404,10 @@ vendor/lib64/libsystem_health_mon.so|9ad529e01e048da5df35e7dca85b14078f75a4f3
 vendor/lib64/libxml.so|00c701f4003f037f5c6e96c4c97f172e18b96038
 vendor/lib/libmdmdetect.so|195a7398c537c6ddc43f7c4e41fd7e6f28fb269f
 
-# Radio - IMS - from marlin
--vendor/app/ims/ims.apk|e2bdae6bae9d5830a0453bafaafcf298e7d57ac4
--vendor/app/imssettings/imssettings.apk|0f3d622a59038cfc881a26f541f5cc7a0913b603
-vendor/lib64/libimscamera_jni.so|7fcd8ddaa6748d8de5de7d49cf5403cb050f4c34
-vendor/lib64/libimsmedia_jni.so|e6b526325e00bb3f80a80b64bd5756c286840009
+# Radio - IMS - from bullhead
+-vendor/app/ims/ims.apk
+vendor/lib64/libimscamera_jni.so
+vendor/lib64/libimsmedia_jni.so
 
 # Radio - IMS
 bin/imsdatadaemon:vendor/bin/imsdatadaemon
