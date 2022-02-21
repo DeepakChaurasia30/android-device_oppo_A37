@@ -40,13 +40,21 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
+        <item>1</item>        <!-- pitch black -->
+        <item>5</item>
         <item>9</item>
-        <item>30</item>
-        <item>100</item>
-        <item>325</item>
-        <item>1250</item>
-        <item>3500</item>
-        <item>10000</item>
+        <item>14</item>
+        <item>25</item>       <!-- twilight -->
+        <item>50</item>       <!-- dim indoor -->
+        <item>100</item>      <!-- home -->
+        <item>200</item>
+        <item>300</item>      <!-- office -->
+        <item>500</item>      <!-- sunrise -->
+        <item>750</item>
+        <item>1000</item>     <!-- overcast -->
+        <item>2000</item>
+        <item>5000</item>
+        <item>10000</item>    <!-- daylight -->
         <item>20000</item>
     </integer-array>
 
@@ -56,14 +64,22 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>30</item>
-        <item>46</item>
-        <item>70</item>
-        <item>70</item>
-        <item>94</item>
-        <item>134</item>
-        <item>148</item>
-        <item>252</item>
+        <item>7</item>
+        <item>8</item>
+        <item>10</item>
+        <item>12</item>
+        <item>17</item>
+        <item>29</item>
+        <item>35</item>
+        <item>47</item>
+        <item>75</item>
+        <item>114</item>
+        <item>130</item>
+        <item>152</item>
+        <item>175</item>
+        <item>200</item>
+        <item>215</item>
+        <item>235</item>
         <item>255</item>
     </integer-array>
 
@@ -90,18 +106,6 @@
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">4dp</dimen>
-
-    <!-- Default value for led color when battery is low on charge -->
-    <integer name="config_notificationsBatteryLowARGB">0x00FF0000</integer>
-
-    <!-- Default value for led color when battery is medium charged -->
-    <integer name="config_notificationsBatteryMediumARGB">0x000000FF</integer>
-
-    <!-- Default value for led color when battery is fully charged -->
-    <integer name="config_notificationsBatteryFullARGB">0x0000FF00</integer>
-
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
@@ -139,7 +143,6 @@
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
          provisioning, availability etc -->
     <bool name="config_carrier_vt_available">true</bool>
-
 
     <!-- Enable doze mode
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->
