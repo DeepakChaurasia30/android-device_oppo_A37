@@ -70,9 +70,6 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_CUSTOM_DTBTOOL := dtbToolOppo
 TARGET_KERNEL_CONFIG := lineageos_a37f_defconfig
 
-# HIDL
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
-
 # LMKD stats logging
 TARGET_LMKD_STATS_LOG := true
 
