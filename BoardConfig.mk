@@ -15,6 +15,9 @@
 # limitations under the License.
 #
 
+# 32-bit
+FORCE_32_BIT := true
+
 # Inherit from msm8916-common
 include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
@@ -30,6 +33,7 @@ MALLOC_SVELTE := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
 # Camera
+BOARD_GLOBAL_CFLAGS += -DCONFIG_OPPO_CAMERA_51
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
@@ -87,9 +91,7 @@ BOARD_NO_SECURE_DISCARD := true
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Shims
-TARGET_LD_SHIM_LIBS += \
-    /system/vendor/lib64/lib-imsdpl.so|libshims_boringssl.so \
-    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
+TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/libmmcamera2_stats_modules.so|libshim_camera.so \
     /system/vendor/lib/libmmcamera2_stats_algorithm.so|libcamera_shim.so \
     /system/vendor/lib/hw/camera.vendor.msm8916.so|libshim_camera.so 
