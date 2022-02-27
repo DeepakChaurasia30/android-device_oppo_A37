@@ -21,8 +21,7 @@ $(call inherit-product, device/oppo/A37/art.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal

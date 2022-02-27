@@ -15,17 +15,16 @@
 
 $(call inherit-product, device/oppo/A37/full_A37.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_mini_phone.mk)
+# Inherit some common ancient stuff.
+$(call inherit-product, vendor/ancient/config/common_full_phone.mk)
+
+# Inherit some common Ancient stuff.
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
 
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=none
-
-PRODUCT_NAME := lineage_A37
+PRODUCT_NAME := ancient_A37
 BOARD_VENDOR := oppo
 PRODUCT_DEVICE := A37
 
