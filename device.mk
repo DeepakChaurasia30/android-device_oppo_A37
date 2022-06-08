@@ -239,21 +239,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml
 
-# Camera
-PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.5-impl \
-    android.hardware.camera.provider@2.5-service \
-    camera.device@1.0-impl \
-    camera.msm8916 \
-    libmm-qcamera \
-    libmmcamera_ov13850 \
-    Camera2
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.cpp.duplication=false \
-    persist.camera.hal.debug.mask=0 \
-    persist.camera.feature.cac=1
-
 # FastCharge
 PRODUCT_PACKAGES += \
     vendor.lineage.fastcharge@1.0-service.usb
