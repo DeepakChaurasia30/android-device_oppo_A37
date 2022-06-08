@@ -3,7 +3,7 @@
     <!-- Nothing -->
     <item name="none">0</item>
     <!-- This is the battery capacity in mAh -->
-    <item name="battery.capacity">2300</item>
+    <item name="battery.capacity">2630</item>
     <!-- Power consumption when CPU is suspended -->
     <item name="cpu.idle">2</item>
     <!-- Additional power consumption when CPU is in a kernel idle loop -->
