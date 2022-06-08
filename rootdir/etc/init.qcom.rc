@@ -35,9 +35,6 @@ on early-init
     chown root gps /dev/subsys_modem
     chmod 0660 /dev/subsys_modem
 
-    write /sys/class/leds/red/trigger "none"
-    write /sys/class/leds/green/trigger "default-on"
-
     # Turn off backlight on blank
     write /sys/class/leds/lcd-backlight/trigger "backlight"
 
@@ -136,15 +133,6 @@ on boot
     chown bluetooth net_bt /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
 
-
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/red/max_brightness
-    chown system system /sys/class/leds/red/trigger
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/max_brightness
-    chown system system /sys/class/leds/green/trigger
-
-
     # Create directory used by display clients
     mkdir /persist/alarm 0770 system system
     mkdir /persist/display 0770 system graphics
@@ -157,8 +145,8 @@ on boot
     chown bluetooth bluetooth /dev/ttyHS2
 
     # Double tap to wake 
-    chown system system /sys/android_touch/doubletap2wake
-    chmod 0660  /sys/android_touch/doubletap2wake
+    chown system system /proc/touchpanel/double_tap_enable
+    chmod 0660  /proc/touchpanel/double_tap_enablee
 
     #Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 2770 radio radio

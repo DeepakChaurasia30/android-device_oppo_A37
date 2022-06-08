@@ -38,8 +38,8 @@ on early-init
 
 on boot
     # charger
-    chown system system /sys/bus/i2c/drivers/lc709203/batt_capacity
-    chmod 0660 /sys/bus/i2c/drivers/lc709203/batt_capacity
+    chown system system /sys/class/power_supply/bms/capacity
+    chmod 0660 /sys/class/power_supply/bms/capacity
     chown root system /sys/class/power_supply/bms/current_now
     chown root system /sys/class/power_supply/bms/voltage_ocv
     chmod 0664 /sys/class/power_supply/bms/current_now
@@ -74,8 +74,8 @@ on init
     chown system system /sys/class/power_supply/battery/charging_enabled
     chmod 0664 /sys/class/power_supply/battery/charging_enabled
 
-    chown system system /sys/class/power_supply/battery/capacity
-    chmod 0664 /sys/class/power_supply/battery/capacity
+    chown system system /sys/class/power_supply/bms/capacity
+    chmod 0664 /sys/class/power_supply/bms/capacity
     chown system system /sys/class/power_supply/battery/temp
     chmod 0664 /sys/class/power_supply/battery/temp
 
@@ -108,8 +108,6 @@ on charger
    chmod 0664 /sys/class/power_supply/bms/current_now
    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
    start vm_bms
-   write /sys/class/leds/green/trigger "none"
-   write /sys/class/leds/red/trigger "timer"
 
 on zygote-start
     start zygote
