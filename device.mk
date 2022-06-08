@@ -594,7 +594,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.swap_free_low_percentage=10
 
 # Inherit customized Android Go defaults.
-$(call inherit-product, device/lenovo/a6010/go_defaults_custom.mk)
+$(call inherit-product, device/oppo/a37/go_defaults_custom.mk)
 
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
@@ -766,4 +766,4 @@ PRODUCT_VENDOR_PROPERTIES += \
     external_storage.sdcardfs.enabled=0
 
 
-$(call inherit-product, vendor/lenovo/a6010/a6010-vendor.mk)
+$(call inherit-product, vendor/oppo/a37/a37-vendor.mk)

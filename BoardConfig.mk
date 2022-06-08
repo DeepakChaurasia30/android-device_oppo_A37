@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PATH := device/lenovo/a6010
+DEVICE_PATH := device/oppo/a37
 
 # HACKS [TO BE REMOVED]
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -57,7 +57,7 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 \
                         androidboot.memcg=true
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-TARGET_KERNEL_SOURCE := kernel/lenovo/a6010
+TARGET_KERNEL_SOURCE := kernel/oppo/a37
 TOP_PATH := $(realpath $(TOP))
 TARGET_KERNEL_CLANG_COMPILE := false
 KERNEL_TOOLCHAIN := $(TOP_PATH)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi/bin
@@ -209,4 +209,4 @@ TARGET_TAP_TO_WAKE_NODE := /sys/android_touch/doubletap2wake
 DISABLE_APEX_TEST_MODULE := true
 
 # Proprietary Prebuilt
--include vendor/lenovo/a6010/BoardConfigVendor.mk
+-include vendor/oppo/a37/BoardConfigVendor.mk

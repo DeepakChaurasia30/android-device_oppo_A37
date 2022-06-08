@@ -1,10 +1,10 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_a6010.mk \
-    $(LOCAL_DIR)/lineage_a6010_gms_go.mk
+    $(LOCAL_DIR)/lineage_a37.mk \
+    $(LOCAL_DIR)/lineage_a37_gms_go.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_a6010-eng \
-    lineage_a6010-userdebug \
-    lineage_a6010-user \
-    lineage_a6010_gms_go-userdebug \
-    lineage_a6010_gms_go-user
+    lineage_a37-eng \
+    lineage_a37-userdebug \
+    lineage_a37-user \
+    lineage_a37_gms_go-userdebug \
+    lineage_a37_gms_go-user

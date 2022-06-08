@@ -1,6 +1,6 @@
 # Sets Android Go recommended default product options..
 
-DEVICE_PATH := device/lenovo/a6010
+DEVICE_PATH := device/oppo/a37
 
 # Set lowram options and enable traced by default
 PRODUCT_PROPERTY_OVERRIDES += \

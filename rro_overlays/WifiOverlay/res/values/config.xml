@@ -85,7 +85,7 @@
     <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
 
     <!-- Default access point SSID used for tethering -->
-    <string name="wifi_tether_configure_ssid_default" translatable="false">Lenovo A6010</string>
+    <string name="wifi_tether_configure_ssid_default" translatable="false">Oppo A37</string>
 
     <integer translatable="false" name="config_wifi_logger_ring_buffer_verbose_size_limit_kb">64</integer>
 </resources>
