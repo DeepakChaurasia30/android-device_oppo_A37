@@ -15,7 +15,7 @@
 -->
 <!-- MessagesGo Overlay -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.android.apps.messaging.lenovo_msm8916"
+    package="com.google.android.apps.messaging.oppo_msm8916"
     android:versionCode="1"
     android:versionName="1.0">
     <application android:hasCode="false" />

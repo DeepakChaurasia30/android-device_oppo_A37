@@ -15,7 +15,7 @@
 -->
 <!-- TrebuchetGo overlay -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.launcher3.lenovo_msm8916"
+    package="com.android.launcher3.oppo_msm8916"
     android:versionCode="1"
     android:versionName="1.0">
     <application android:hasCode="false" />
