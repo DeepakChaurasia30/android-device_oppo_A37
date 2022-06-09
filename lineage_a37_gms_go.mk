@@ -15,7 +15,7 @@
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
-$(call inherit-product, deviceoppo/a37/device.mk)
+$(call inherit-product, device/oppo/a37/device.mk)
 $(call inherit-product, vendor/lineage/config/common_mini_go_phone.mk)
 
 # GMS GO (1GB)
