@@ -685,10 +685,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
+    calmodule.cfg \
+    libcalmodule_common \
+    libcalmodule_akm \
+    android.hardware.sensors@1.0-impl.msm8916 \
+    android.hardware.sensors@1.0-service.msm8916 \
     accelcal \
     AccCalibration \
-    calmodule.cfg \
+    sensord \
     sensors.msm8916
 
 # Sensors
