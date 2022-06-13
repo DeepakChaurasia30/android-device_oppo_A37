@@ -19,10 +19,10 @@ $(call inherit-product, device/oppo/a37/device.mk)
 $(call inherit-product, vendor/lineage/config/common_mini_go_phone.mk)
 
 # GMS GO (1GB)
-#WITH_GMS := true
-#GMS_MAKEFILE := gms_go.mk
+WITH_GMS := true
+GMS_MAKEFILE := gms_go.mk
 
-#$(call inherit-product, vendor/lineage/config/partner_gms.mk)
+$(call inherit-product, vendor/lineage/config/partner_gms.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
